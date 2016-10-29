@@ -48,14 +48,17 @@ angular.module('codeDust.controller', [])
 		var applySelected = function(type,property,data){
 			if(data.options && data.options[property]){
 				if(property === 'language'){
+					
 					editor.getSession().setMode("ace/mode/"+data.options.language.mode);
 				}else if(property === 'theme'){
 					editor.setTheme("ace/theme/"+data.options.theme.mode);
 				}
 				
-				$scope.playground[type].forEach(function(available){
+				$scope.playground[type].forEach(function(available,index){
 					if(available['mode'] === data.options[property]['mode']){
-						$scope.playground[property] = data.options[property];
+						$scope.playground[property] = $scope.playground[type][index];
+						
+
 					}
 				})
 				
