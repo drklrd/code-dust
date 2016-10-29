@@ -2,3 +2,18 @@
 .container
     #editor(ng-keyup="writingCode()" ng-model="playground.arena")
 
+    #options
+        h1 
+            b
+                &lt;code-dust/&gt;
+        p
+            select(class="form-control" name="code-dust-language" ng-model="playground.language" ng-options="language.language for language in playground.availableLanguages" ng-change="applyLanguage(playground.language)")
+                <option value=""> Select Language</option>
+        p
+            select(class="form-control" name="code-dust-theme" ng-model="playground.theme" ng-options="theme.theme for theme in playground.availableThemes" ng-change="applyTheme(playground.theme)")
+                <option value=""> Select Theme</option>
+
+        p 
+            span Total Connected : {{playground.totalPlayers}}
+
+

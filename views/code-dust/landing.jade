@@ -1,5 +1,12 @@
-.container
-	form(name="newPlaygroundForm" no-validate ng-submit="goToPlayground()")
-		input(type="text" class="form-control" name="ground-name" ng-model="landing.groundName" placeholder="Enter Playground Name")
-		button(type="submit" class="btn btn-success")
-			| Enter Playground
+.container#landing
+	.row
+		.col-xs-4
+		.col-xs-6
+			h1 
+				b.code-dust-landing
+					&lt;code-dust/&gt;
+			form(name="newPlaygroundForm" no-validate ng-submit="goToPlayground(newPlaygroundForm.$valid)")
+				input(type="text" class="form-control" name="ground-name" ng-model="landing.groundName" placeholder="Enter Playground Name" required)
+				br
+				button(type="submit" class="btn btn-success" ng-disabled="newPlaygroundForm.$invalid")
+					span(class="glyphicon  glyphicon-play")
