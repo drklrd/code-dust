@@ -3,7 +3,8 @@ var appDependencies = [
 	'ui.router',
 	'codeDust.routes',
 	'codeDust.controller',
-	'codeDust.configs'
+	'codeDust.configs',
+	'angular-md5'
 ]
 
 var ghumante = angular.module('codeDust',appDependencies);
