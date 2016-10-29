@@ -1,0 +1,26 @@
+doctype html
+html
+    head
+        meta(charset="utf-8")
+        title Code Dust
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+
+        script(src="/external-lib/ace.io/src-min/ace.js" type="text/javascript" charset="utf-8")
+        script(src="/bower_components/jquery/dist/jquery.min.js ")
+        script(src="/bower_components/bootstrap/dist/js/bootstrap.min.js ")
+        script(src="/bower_components/angular/angular.min.js")
+        script(src="/bower_components/angular-ui-router/release/angular-ui-router.min.js")
+        
+        script(src="/javascripts/app/app.js")
+        script(src="/javascripts/app/routes.js")
+        script(src="/javascripts/app/controller.js")
+        script(src="/javascripts/app/configs.js")
+        script(src="/socket.io/socket.io.js")
+        
+
+
+    body(ng-app="codeDust")
+        block content
+            ui-view
+        

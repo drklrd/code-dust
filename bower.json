@@ -1,0 +1,28 @@
+{
+  "name": "code-dust",
+  "description": "A platform to share and view code snippet in real-time with peers",
+  "main": "app.js",
+  "authors": [
+    "drklrd <srvbhattarai@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "code-dust",
+    "code-sharing",
+    "real-time-code-view"
+  ],
+  "homepage": "https://github.com/drklrd/code-dust",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.5.8",
+    "angular-ui-router": "0.3.1",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1"
+  }
+}
