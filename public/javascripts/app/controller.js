@@ -205,6 +205,8 @@ angular.module('codeDust.controller', [])
 			}
 		}
 
+		
+
 	}])
 	.controller('landingController',['$scope','$state','md5',function($scope,$state,md5){
 		$scope.landing={};

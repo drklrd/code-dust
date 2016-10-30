@@ -9,10 +9,11 @@
 
 #options{
 	position: absolute;
-	left : 84%;
+	left : 85%;
 	background-color: #E7E7E8;
 	height: 100%;
 	padding: 20px;
+	width: auto;
 }
 
 #landing *{
