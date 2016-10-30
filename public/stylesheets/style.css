@@ -4,16 +4,16 @@
         right: 0;
         bottom: 0;
         left: 0;
-        width : 83%;
+        width : 73%;
 }
 
 #options{
 	position: absolute;
-	left : 85%;
+	left : 75%;
 	background-color: #E7E7E8;
 	height: 100%;
 	padding: 20px;
-	width: auto;
+	width: 20%;
 }
 
 #landing *{
@@ -86,3 +86,18 @@
     from {top: 30px; opacity: 1;}
     to {top: 0; opacity: 0;}
 }
+
+.share-button{
+	background-color: #ec6c6c;
+	color : #ffffff;
+	padding : 10px;
+	border: none;
+	border-radius: 5px;
+}
+
+#share-section{
+	margin-top: 80px;
+}
+
+#sharing-url{
+	font-size: 11px;

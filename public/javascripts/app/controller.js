@@ -1,7 +1,7 @@
 'use strict';
 angular.module('codeDust.controller', [])
 
-	.controller('playgroundController',['$scope','$stateParams','toaster',function($scope,$stateParams,toaster){
+	.controller('playgroundController',['$scope','$stateParams','toaster','$window',function($scope,$stateParams,toaster,$window){
 
 		var editor = ace.edit("editor");
 		editor.setTheme("ace/theme/terminal");
@@ -203,6 +203,19 @@ angular.module('codeDust.controller', [])
 				toaster.show('theme has been changed to '+ theme.mode);
 				$scope.writingCode();
 			}
+		}
+
+
+		$scope.copyToClipboard = function(copy){
+			var copyElement = copy === 'url' ? $window.location.href : editor.getValue();
+			angular.element('<textarea/>')
+			        .css({ 'opacity' : '0', 'position' : 'fixed' })
+			        .text(copyElement)
+			        .appendTo(angular.element($window.document.body))
+			        .select()
+			        .each(function() { document.execCommand('copy') })
+			        .remove();
+			toaster.show(copy === 'url' ?  'link has been copied to your clipboard !' : 'code has been copied to your clipboard !')
 		}
 
 		

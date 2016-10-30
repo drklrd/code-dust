@@ -1,7 +1,7 @@
 
 .container
     #editor(ng-keyup="writingCode()" ng-model="playground.arena")
-    
+
     #options
         h1 
             b.pretty-color
@@ -16,10 +16,29 @@
         p 
             span Total Connected : {{playground.totalPlayers}}
 
+        #share-section
+        
+            p
+                button(type="button" class="share-button" ng-click="copyToClipboard('url')")
+                    span.glyphicon.glyphicon-share 
+                    span  Copy Link
+            p 
+                span To work in the code with peers , click here to copy the URL
+            br
+            p
+                button(type="button" class="share-button" ng-click="copyToClipboard('code')")
+                    span.glyphicon.glyphicon-copy 
+                    span  Copy code
+            p 
+                span Click to copy the code
+
+
 
 
         #footer
-            span The code editor used is  Ace editor - https://ace.c9.io
+            b
+                span The code editor used is  Ace editor 
+                span.pretty-color - https://ace.c9.io
 
     #snackbar
 
