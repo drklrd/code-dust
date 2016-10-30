@@ -4,7 +4,7 @@
 
     #options
         h1 
-            b
+            b.pretty-color
                 &lt;code-dust/&gt;
         p
             select(class="form-control" name="code-dust-language" ng-model="playground.language" ng-options="language.language for language in playground.availableLanguages" ng-change="applyLanguage(playground.language)")
@@ -15,5 +15,11 @@
 
         p 
             span Total Connected : {{playground.totalPlayers}}
+
+        #footer
+            span The code editor used is  Ace editor - https://ace.c9.io
+
+    #snackbar
+        
 
 

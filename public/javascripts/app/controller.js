@@ -1,9 +1,7 @@
 'use strict';
 angular.module('codeDust.controller', [])
 
-	.controller('playgroundController',['$scope','$stateParams',function($scope,$stateParams){
-
-		
+	.controller('playgroundController',['$scope','$stateParams','toaster',function($scope,$stateParams,toaster){
 
 		var editor = ace.edit("editor");
 		editor.setTheme("ace/theme/terminal");
@@ -56,6 +54,9 @@ angular.module('codeDust.controller', [])
 				
 				$scope.playground[type].forEach(function(available,index){
 					if(available['mode'] === data.options[property]['mode']){
+						if(  !$scope.playground[property] || $scope.playground[property]['mode'] !== data.options[property]['mode']  ){
+							toaster.show(property +  ' has been changed to ' + data.options[property]['mode']);
+						}
 						$scope.playground[property] = $scope.playground[type][index];
 						
 
@@ -103,6 +104,34 @@ angular.module('codeDust.controller', [])
 			{
 				language : 'Jade',
 				mode : 'jade'
+			},
+			{
+				language : 'JSON',
+				mode : 'json'
+			},
+			{
+				language : 'Less',
+				mode : 'less'
+			},
+			{
+				language : 'Sass',
+				mode : 'sass'
+			},
+			{
+				language : 'SCSS',
+				mode : 'scss'
+			},
+			{
+				language : 'Matlab',
+				mode : 'matlab'
+			},
+			{
+				language : 'MySQL',
+				mode : 'mysql'
+			},
+			{
+				language : 'Typescript',
+				mode : 'typescript'
 			}
 		];
 
@@ -122,7 +151,32 @@ angular.module('codeDust.controller', [])
 			{
 				theme : 'Cobalt',
 				mode : 'cobalt'
+			},
+			{
+				theme : 'Ambiance',
+				mode : 'ambiance'
+			},
+			{
+				theme : 'Chaos',
+				mode : 'chaos'
+			},
+			{
+				theme : 'Chrome',
+				mode : 'chrome'
+			},
+			{
+				theme : 'Clouds',
+				mode : 'clouds'
+			},
+			{
+				theme : 'Dawn',
+				mode : 'dawn'
+			},
+			{
+				theme : 'Twilight',
+				mode : 'twilight'
 			}
+
 		];
 
 		$scope.playground.theme= $scope.playground.availableThemes[1];
@@ -138,6 +192,7 @@ angular.module('codeDust.controller', [])
 		$scope.applyLanguage = function(language){
 			if(language){
 				editor.getSession().setMode("ace/mode/"+language.mode);
+				toaster.show('language has been changed to '+ language.mode);
 				$scope.writingCode();
 			}
 		}
@@ -145,6 +200,7 @@ angular.module('codeDust.controller', [])
 		$scope.applyTheme = function(theme){
 			if(theme){
 				editor.setTheme("ace/theme/"+theme.mode);
+				toaster.show('theme has been changed to '+ theme.mode);
 				$scope.writingCode();
 			}
 		}

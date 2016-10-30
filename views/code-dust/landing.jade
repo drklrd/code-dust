@@ -4,9 +4,16 @@
 		.col-xs-6
 			h1 
 				b.code-dust-landing
-					&lt;code-dust/&gt;
-			form(name="newPlaygroundForm" no-validate ng-submit="goToPlayground(newPlaygroundForm.$valid)")
-				input(type="text" class="form-control" name="ground-name" ng-model="landing.groundName" placeholder="Enter Playground Name" required)
-				br
-				button(type="submit" class="btn btn-success" ng-disabled="newPlaygroundForm.$invalid")
-					span(class="glyphicon  glyphicon-play")
+					&lt; code-dust /&gt;
+			.tagline(class="pull-right")
+				b
+					span a platform for realtime code sharing and peer involvement
+			
+			#playground-form
+
+				form(name="newPlaygroundForm" no-validate ng-submit="goToPlayground(newPlaygroundForm.$valid)")
+					input(type="text" class="form-control" name="ground-name" ng-model="landing.groundName" placeholder="Enter Playground Name" required)
+					br
+					.play-button
+						button(type="submit" class="btn btn-alert" ng-disabled="newPlaygroundForm.$invalid")
+							span(class="glyphicon  glyphicon-play")

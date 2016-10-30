@@ -4,6 +4,7 @@ var appDependencies = [
 	'codeDust.routes',
 	'codeDust.controller',
 	'codeDust.configs',
+	'codeDust.services',
 	'angular-md5'
 ]
 
