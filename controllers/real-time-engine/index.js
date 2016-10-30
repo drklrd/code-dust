@@ -9,9 +9,6 @@ module.exports = (router,server)=>{
 
 	var io = socketIO(server);
 
-	io.set('transports', ['xhr-polling']);
-	io.set('polling duration', 10);
-
 	io.on('connection',(socket)=>{
 		
 
