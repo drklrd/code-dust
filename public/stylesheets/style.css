@@ -40,10 +40,10 @@
 }
 
 #footer{
-	font-size: 11px;
+	font-size: 15px;
 	position: absolute;
 	bottom : 40px;
-	
+
 
 }
 
@@ -58,7 +58,7 @@
     padding: 16px;
     position: fixed;
     z-index: 1;
-    left: 91%;
+    left: 85%;
     top: 30px;
     font-size: 11px;
 }
@@ -112,7 +112,7 @@
 	top : 10px;
 	font-size: 50px;
 	left : 75%;
-	opacity: 0.2;
+	opacity: 0.5;
 }
 
 #dummy-code-snippet2{

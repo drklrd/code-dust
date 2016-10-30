@@ -7,11 +7,13 @@
             b.pretty-color
                 &lt;code-dust/&gt;
         p
-            select(class="form-control" name="code-dust-language" ng-model="playground.language" ng-options="language.language for language in playground.availableLanguages" ng-change="applyLanguage(playground.language)")
-                <option value=""> Select Language</option>
+            b
+                select(class="form-control" name="code-dust-language" ng-model="playground.language" ng-options="language.language for language in playground.availableLanguages" ng-change="applyLanguage(playground.language)")
+                    <option value=""> Select Language</option>
         p
-            select(class="form-control" name="code-dust-theme" ng-model="playground.theme" ng-options="theme.theme for theme in playground.availableThemes" ng-change="applyTheme(playground.theme)")
-                <option value=""> Select Theme</option>
+            b
+                select(class="form-control" name="code-dust-theme" ng-model="playground.theme" ng-options="theme.theme for theme in playground.availableThemes" ng-change="applyTheme(playground.theme)")
+                    <option value=""> Select Theme</option>
 
         p 
             span Peer(s) connected  : {{playground.totalPlayers}}
@@ -24,7 +26,7 @@
                     span  Copy Link
             p 
                 b
-                    span To work in the code with peers , click here to copy the URL
+                    span Click here to copy the URL and share this playground with others
             br
             p
                 button(type="button" class="share-button" ng-click="copyToClipboard('code')")
@@ -39,8 +41,8 @@
 
         #footer
             b
-                span The code editor used is  Ace editor 
-                span.pretty-color - https://ace.c9.io
+                span Code editor used -  Ace editor 
+                span.pretty-color  https://ace.c9.io
 
     #snackbar
 
