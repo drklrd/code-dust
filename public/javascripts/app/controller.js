@@ -207,13 +207,22 @@ angular.module('codeDust.controller', [])
 
 
 	}])
-	.controller('landingController', ['$scope', '$state', 'md5', function($scope, $state, md5) {
+	.controller('landingController', ['$scope', '$state', 'md5','$http', function($scope, $state, md5,$http) {
 		$scope.landing = {};
 		$scope.goToPlayground = function(formValid) {
 			if (formValid) {
-				$state.go('playground', {
-					id: md5.createHash(new Date().getTime() + $scope.landing.groundName)
-				});
+				var hashedGround = md5.createHash(new Date().getTime() + $scope.landing.groundName);
+				$http
+					.post('/api/playground/create',{hashedGround:hashedGround})
+					.success(function(response){
+						if(response && response.success){
+							
+							$state.go('playground', {
+								id: hashedGround
+							});
+						}
+					})
+				
 			}
 
 		}

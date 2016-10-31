@@ -133,3 +133,18 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.sad-face{
+    font-size: 180px;
+ 
+}
+
+.sadface-tagline{
+    color: grey;
+    font-size: 20px;
+    text-align: left;
+}
+
+.code-inner{
+    
+}

@@ -13,7 +13,9 @@ routes.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
         })
         .state('playground',{
             url : '/playground/:id',
-            templateUrl : '/templates/playground',
+            templateUrl: function ($stateParams){
+                 return '/templates/playground/' + $stateParams.id;
+            },
             controller : 'playgroundController'
         })
         
