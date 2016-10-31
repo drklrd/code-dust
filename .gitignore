@@ -30,6 +30,8 @@ build/Release
 node_modules
 bower_components/
 jspm_packages
+models/playgrounddata.json
+models/playgrounds.json
 
 # Optional npm cache directory
 .npm
