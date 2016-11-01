@@ -20,13 +20,15 @@ angular.module('codeDust.controller', [])
 		socket.on('connect', function() {
 			socket.on('onTheGround_' + $stateParams.id, function(data) {
 
-				editor.setValue(data.code);
+				editor.setValue(data.code,1);
 				if (data.options.language && data.options.language.mode) {
 					editor.getSession().setMode("ace/mode/" + data.options.language.mode);
 				}
 				if (data.options.theme && data.options.theme.mode) {
 					editor.setTheme("ace/theme/" + data.options.theme.mode);
 				}
+
+				positionCursor();
 
 
 				applySelected('availableLanguages', 'language', data);
@@ -41,9 +43,10 @@ angular.module('codeDust.controller', [])
 		})
 
 		socket.on('dustedCode_' + $stateParams.id, function(data) {
-			editor.setValue(data.code);
+			editor.setValue(data.code,1);
 			applySelected('availableLanguages', 'language', data);
 			applySelected('availableThemes', 'theme', data);
+			positionCursor();
 
 		})
 
@@ -158,6 +161,17 @@ angular.module('codeDust.controller', [])
 
 		$scope.playground.theme = $scope.playground.availableThemes[1];
 
+		var positionCursor = function(){
+			var activeLine = angular.element('.ace_active-line');
+			var cursor = document.getElementById('cursorposition');
+			cursor.style.position='absolute';
+			var yPos = editor.getCursorPosition().row* activeLine.height();
+			cursor.style.top = yPos+'px';
+			cursor.style.left = "73%";
+		}
+
+		positionCursor();
+		
 		$scope.writingCode = function() {
 
 			socket.emit('codeDusting', {
@@ -168,6 +182,8 @@ angular.module('codeDust.controller', [])
 					theme: $scope.playground.theme
 				}
 			});
+			
+			positionCursor();
 		}
 
 		$scope.applyLanguage = function(language) {
