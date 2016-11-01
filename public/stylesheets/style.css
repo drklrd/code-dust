@@ -111,7 +111,7 @@
 	position: absolute;
 	top : 10px;
 	font-size: 50px;
-	left : 75%;
+	left : 70%;
 	opacity: 0.5;
 }
 
@@ -152,4 +152,9 @@
 .arrow-cursor{
     font-size: 21px;
 
+}
+
+.ace_active-line{
+    background: yellow !important;
+    opacity: 0.3;
 }

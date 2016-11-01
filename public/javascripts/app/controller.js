@@ -11,7 +11,7 @@ angular.module('codeDust.controller', [])
 			fontSize: "15pt"
 		});
 
-
+		editor.focus();
 
 		var socket = io.connect({
 			query: "playground=" + $stateParams.id
@@ -28,7 +28,7 @@ angular.module('codeDust.controller', [])
 					editor.setTheme("ace/theme/" + data.options.theme.mode);
 				}
 
-				positionCursor();
+				// positionCursor();
 
 
 				applySelected('availableLanguages', 'language', data);
@@ -46,7 +46,7 @@ angular.module('codeDust.controller', [])
 			editor.setValue(data.code,1);
 			applySelected('availableLanguages', 'language', data);
 			applySelected('availableThemes', 'theme', data);
-			positionCursor();
+			// positionCursor();
 
 		})
 
@@ -161,16 +161,22 @@ angular.module('codeDust.controller', [])
 
 		$scope.playground.theme = $scope.playground.availableThemes[1];
 
-		var positionCursor = function(){
-			var activeLine = angular.element('.ace_active-line');
-			var cursor = document.getElementById('cursorposition');
-			cursor.style.position='absolute';
-			var yPos = editor.getCursorPosition().row* activeLine.height();
-			cursor.style.top = yPos+'px';
-			cursor.style.left = "73%";
-		}
+		
 
-		positionCursor();
+		// var positionCursor = function(){
+		// 	var activeLine = angular.element('.ace_active-line');
+		// 	activeLine.append('<span style="margin-left:95%" > here</span>')
+		// 	// var cursor = document.getElementById('cursorposition');
+		// 	// cursor.style.position='absolute';
+		// 	// var yPos = editor.getCursorPosition().row* activeLine.height();
+		// 	// if((yPos) <document.getElementById('editor').offsetHeight){
+		// 	// 	cursor.style.top = yPos+'px';
+		// 	// }
+			
+		// 	// cursor.style.left = "73%";
+		// }
+
+		// positionCursor();
 		
 		$scope.writingCode = function() {
 
@@ -183,7 +189,7 @@ angular.module('codeDust.controller', [])
 				}
 			});
 			
-			positionCursor();
+			// positionCursor();
 		}
 
 		$scope.applyLanguage = function(language) {
