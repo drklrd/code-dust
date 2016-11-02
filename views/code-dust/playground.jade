@@ -19,13 +19,25 @@
             span Peer(s) connected  : {{playground.totalPlayers}}
 
         #share-section
-        
+
+            p 
+                label(class="share-button")
+                    span.glyphicon.glyphicon-file  
+                    span  Open file 
+                    input(type="file" style="display: none;" onchange="angular.element(this).scope().fileChanged(this)")
+            p 
+                
+                    span Click to open file
+                    br
+                    span(ng-repeat="supportedFileType in supportedFileTypes")
+                        span.supported-filetype {{supportedFileType}} &nbsp;
+            br
             p
                 button(type="button" class="share-button" ng-click="copyToClipboard('url')")
                     span.glyphicon.glyphicon-share 
                     span  Copy Link
             p 
-                b
+                
                     span Click here to copy the URL and share this playground with others
             br
             p
@@ -33,7 +45,7 @@
                     span.glyphicon.glyphicon-copy 
                     span  Copy code
             p 
-                b
+                
                     span Click to copy the code
 
 

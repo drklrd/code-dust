@@ -16,7 +16,10 @@ routes.config(['$stateProvider','$urlRouterProvider',function($stateProvider,$ur
             templateUrl: function ($stateParams){
                  return '/templates/playground/' + $stateParams.id;
             },
-            controller : 'playgroundController'
+            controller : 'playgroundController',
+            params : {
+                welcomeCoder : null
+            }
         })
         
 

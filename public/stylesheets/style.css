@@ -95,6 +95,7 @@
 	padding : 10px;
 	border: none;
 	border-radius: 5px;
+    cursor: pointer;
 }
 
 #share-section{
@@ -157,4 +158,8 @@
 .ace_active-line{
     background: yellow !important;
     opacity: 0.3;
+}
+
+.supported-filetype{
+    font-size: 9px;
 }

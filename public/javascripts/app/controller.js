@@ -13,6 +13,36 @@ angular.module('codeDust.controller', [])
 
 		editor.focus();
 
+		editor.$blockScrolling = Infinity;
+
+
+		
+		var welcomeCoder = function(){
+			var welcomeText = `Hello there ! Welcome to Code Dust. Here you can write code and share with others. 
+				You can select language and theme as well.
+
+				Happy coding and code sharing ! :) 
+
+				This message will now clear ........................................
+			`;
+			var letters = '';
+			var interval = setInterval(function(){
+				if (letters.length < welcomeText.length) { 
+				      letters = letters + welcomeText[letters.length];
+				      editor.setValue(letters,1);
+				   }
+				   else {
+				   	  	editor.setValue('',1); 
+				      	clearInterval(interval);
+
+				   }
+				},50);
+		}
+		
+		if($stateParams.welcomeCoder){
+			welcomeCoder();
+		}
+
 		var socket = io.connect({
 			query: "playground=" + $stateParams.id
 		});
@@ -226,6 +256,48 @@ angular.module('codeDust.controller', [])
 			toaster.show(copy === 'url' ? 'link has been copied to your clipboard !' : 'code has been copied to your clipboard !')
 		}
 
+		$scope.supportedFileTypes = {
+			'js' : 'javascript',
+			'py' : 'python',
+			'css' : 'css',
+			'html' : 'html',
+			'php' : 'php',
+			'json' : 'json',
+			'jade' : 'jade',
+
+		};
+
+		$scope.fileChanged = function(element){
+			$scope.$apply(function(scope) {
+			        var file = element.files[0];
+			        var extension = file.name.split('.')[1];
+			        if($scope.supportedFileTypes[extension]){
+			        	var reader = new FileReader();
+			        	editor.setValue("LOADING FILE ...",1);
+			        	reader.onload = function(e) {
+			        		var value = atob(e.target.result.split(',')[1]);
+			        	   	editor.setValue(value,1);
+			        	   	$scope.writingCode();
+			        	   	editor.getSession().setMode("ace/mode/" + $scope.supportedFileTypes[extension] );
+			        	   	
+			        	   	var fileLanguage = $scope.playground.availableLanguages.find(function(language,index) {
+			        	   		language.mappingIndex = index;
+			        	   		return language.mode === $scope.supportedFileTypes[extension];
+			        	   	});
+
+			        	   	$scope.applyLanguage(fileLanguage);
+			        	   	$scope.playground.language = $scope.playground.availableLanguages[fileLanguage.mappingIndex] ;
+			        	   	$scope.$apply();
+			        	   	$scope.writingCode();
+			        	};
+			        	reader.readAsDataURL(file);
+			        }else{
+			        	toaster.show(' File type not supported !');
+			        }
+			        
+			    });
+
+		}
 
 
 	}])
@@ -240,7 +312,8 @@ angular.module('codeDust.controller', [])
 						if(response && response.success){
 							
 							$state.go('playground', {
-								id: hashedGround
+								id: hashedGround,
+								welcomeCoder : true
 							});
 						}
 					})
