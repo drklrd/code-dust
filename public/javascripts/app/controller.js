@@ -23,7 +23,7 @@ angular.module('codeDust.controller', [])
 
 				Happy coding and code sharing ! :) 
 
-				This message will now clear ........................................
+				This message will disappear shortly  ........................................
 			`;
 			var letters = '';
 			var interval = setInterval(function(){
@@ -275,20 +275,28 @@ angular.module('codeDust.controller', [])
 			        	var reader = new FileReader();
 			        	editor.setValue("LOADING FILE ...",1);
 			        	reader.onload = function(e) {
-			        		var value = atob(e.target.result.split(',')[1]);
-			        	   	editor.setValue(value,1);
-			        	   	$scope.writingCode();
-			        	   	editor.getSession().setMode("ace/mode/" + $scope.supportedFileTypes[extension] );
-			        	   	
-			        	   	var fileLanguage = $scope.playground.availableLanguages.find(function(language,index) {
-			        	   		language.mappingIndex = index;
-			        	   		return language.mode === $scope.supportedFileTypes[extension];
-			        	   	});
+			        		editor.setValue($scope.supportedFileTypes[extension]+" file detected. Applying " +$scope.supportedFileTypes[extension] +" mode... ",1);
+			        		
+			        	   	setTimeout(function(){
 
-			        	   	$scope.applyLanguage(fileLanguage);
-			        	   	$scope.playground.language = $scope.playground.availableLanguages[fileLanguage.mappingIndex] ;
-			        	   	$scope.$apply();
-			        	   	$scope.writingCode();
+		        	   			var value = atob(e.target.result.split(',')[1]);
+		        	   		   	editor.setValue(value,1);
+		        	   		   	$scope.writingCode();
+		        	   		   	editor.getSession().setMode("ace/mode/" + $scope.supportedFileTypes[extension] );
+		        	   		   	
+		        	   		   	var fileLanguage = $scope.playground.availableLanguages.find(function(language,index) {
+		        	   		   		language.mappingIndex = index;
+		        	   		   		return language.mode === $scope.supportedFileTypes[extension];
+		        	   		   	});
+
+			        	   		$scope.applyLanguage(fileLanguage);
+			        	   		$scope.playground.language = $scope.playground.availableLanguages[fileLanguage.mappingIndex] ;
+			        	   		$scope.$apply();
+			        	   		$scope.writingCode();
+
+			        	   	},3000);
+
+			        	   
 			        	};
 			        	reader.readAsDataURL(file);
 			        }else{
