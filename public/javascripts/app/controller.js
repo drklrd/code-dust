@@ -36,7 +36,7 @@ angular.module('codeDust.controller', [])
 				      	clearInterval(interval);
 
 				   }
-				},50);
+				},35);
 		}
 		
 		if($stateParams.welcomeCoder){

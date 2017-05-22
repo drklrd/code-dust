@@ -31,6 +31,10 @@
 	color: #ec6c6c;
 }
 
+.name-the-game{
+    text-align: left !important;
+}
+
 #playground-form{
 	margin-top: 80px;
 }
