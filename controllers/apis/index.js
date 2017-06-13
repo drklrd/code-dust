@@ -1,5 +1,6 @@
 'use strict';
 var fs = require('fs');
+var appRootPath = require('app-root-path');
 module.exports = (router)=>{
 
 	router.post('/api/playground/create',function(req,res){
@@ -16,5 +17,26 @@ module.exports = (router)=>{
 			});
 			
 		})
+	})
+
+	router.get('/audio/list',function(req,res){
+		fs.readdir(appRootPath+'/recordings',function(err,files){
+			if(err) {
+				return res.json({
+					success : 0,
+					error : 1,
+					message : err
+				})
+			}
+			return res.json({
+				success : 1,
+				files
+			})
+		})
+
+	});
+
+	router.get('/audio',function(req,res){
+		res.sendFile(appRootPath+'/recordings/test.wav');
 	})
 }
